@@ -6,11 +6,25 @@ public interface Interfaz_R {
 		System.out.println("BIENVENID@");
 		System.out.println("Encender radio?  (SI/NO)");
 	}
-	public float getVolume(float volume);
 	public float setVolume (float volume);
+	public float getVolume(float volume);
+	
 	
 	public float Stat_ChangeB (float current_station);
 	public float Stat_ChangeF (float current_station);
-	
-	public void setStation() throws Exception;
+	/**
+	 * Cambia las estaciones de forma manual
+	 * @param current_station
+	 * @throws Exception
+	 */
+	public void setStation(int current_station) throws Exception;
+	/**
+	 * Guarda la estación en la lista de estaciones guardadas
+	 * @param _station
+	 * @throws Exception
+	 */
+	public void getStation(GUI _station) throws Exception;
+	/**
+	 * Devuelve la estación que se pida de la lista de estaciones guardadas
+	 */
 }

@@ -1,5 +1,5 @@
 package Radio;
 
-public class GUI {
-
+public interface GUI {
+	
 }
