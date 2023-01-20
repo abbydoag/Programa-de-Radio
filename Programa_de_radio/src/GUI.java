@@ -6,10 +6,10 @@ public class GUI {
 		Scanner scan = new Scanner(System.in);
 		Carro c = new Carro();
 		boolean terminar = false, encendido = false, frequency = false;
-
+		float current_station = (float) 87.90;
 		while(!terminar){
             if (encendido){
-                float current_station = c.getStation(current_station);
+                //float current_station = c.getStation(current_station);
                 boolean statusF = c.FM_AM(frequency);
 
 				int opcion = 0;
@@ -54,7 +54,12 @@ public class GUI {
                     case 5:
                     	System.out.println("¿Qué espacio desea ver? (1-6): ");
                     	int opcion2 = 0;
-                        c.getStation(opcion2);
+					try {
+						c.getStation(opcion2);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                         break;
 
                     default:
@@ -64,11 +69,10 @@ public class GUI {
             }
             else{
                 int decision=0;
-                int desicion = 0;
 				System.out.println("Quiere encender el radio?");
 				System.out.println("1. Si");
 				System.out.println("2. No");
-				String s = "Ingrese su decisión: ";
+				System.out.println("Ingrese su decisión: ");
         		decision = scan.nextInt();
                 if(decision==1){
                     encendido=true;
