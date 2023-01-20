@@ -1,4 +1,3 @@
-import java.text.DecimalFormat;
 import java.util.*;
 
 public class GUI {
@@ -6,12 +5,12 @@ public class GUI {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		Carro c = new Carro();
-		boolean terminar, encendido = false;
+		boolean terminar = false, encendido = false, frequency = false;
 
 		while(!terminar){
             if (encendido){
                 float current_station = c.getStation(current_station);
-                boolean statusF = c.AM_FM();
+                boolean statusF = c.FM_AM(frequency);
 
 				int opcion = 0;
 				System.out.println("RADIO");
@@ -44,12 +43,18 @@ public class GUI {
                         break;
 
                     case 4:
-                        c.setSaved(indexB);
+                    	System.out.println("¿En qué espacio desea guardarlo? (1-6): ");
+                    	int opcion1 = 0;
+                    	opcion1 = scan.nextInt();
+                    	
+                        c.setSaved(opcion1);
                         System.out.println("\nSe guardó correctamente");
                         break;
 
                     case 5:
-                        c.setStation(current_station);
+                    	System.out.println("¿Qué espacio desea ver? (1-6): ");
+                    	int opcion2 = 0;
+                        c.getStation(opcion2);
                         break;
 
                     default:
