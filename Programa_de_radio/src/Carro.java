@@ -107,13 +107,6 @@ public class Carro implements Interfaz_R {
 		return;
 		
 	}
-
-	@Override
-	public void getStation(GUI _station) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 	@Override
 	public void setSaved(int indexB) {
@@ -125,6 +118,12 @@ public class Carro implements Interfaz_R {
 			SavedFM.set(indexB, Station);
 
 		}
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getStation(float _station) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}

@@ -36,7 +36,7 @@ public interface Interfaz_R {
 	 * @param _station
 	 * @throws Exception
 	 */
-	public void getStation(GUI _station) throws Exception;
+	public void getStation(float _station) throws Exception;
 	
 	public void setSaved(int indexB);
 	
