@@ -123,7 +123,8 @@ public class Carro implements Interfaz_R {
 	}
 
 	@Override
-	public void getStation(float _station) throws Exception {
+	public float getStation(float _station) throws Exception {
+		return Station;
 		// TODO Auto-generated method stub
 		
 	}
