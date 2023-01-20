@@ -15,6 +15,15 @@ public class Carro implements Interfaz_R {
 	private ArrayList<Number> SavedFM;
 	
 	private float Station;
+	
+	public Carro() {
+		ON = false;
+		Frequency = false;
+		Station = (float) 87.9;
+		
+		_Volume = 0;
+		
+	}
 
 	@Override
 	public boolean On_off(boolean status) {
