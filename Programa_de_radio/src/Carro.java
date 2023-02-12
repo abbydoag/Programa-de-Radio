@@ -23,28 +23,31 @@ public class Carro implements Interfaz_R {
 		
 		_Volume = 0;
 		
+		SavedAM = new ArrayList<Number>();
+		SavedFM = new ArrayList<Number>();
+		
 	}
 
 	@Override
 	public boolean On_off(boolean status) {
-		if (ON = true) { 
+		if (ON == true) { 
 			ON = false;
-			return ON;		
 		}
 		else {
 			ON = true;			
-			return ON;
-		}		
+		}	
+		return ON;		
+
 	}
 
 	@Override
 	public boolean FM_AM(boolean statusF) {
-		if (Frequency = true) {
+		if (Frequency == true) {
 			Frequency = false;
 			Station = (float) 87.9;
 		}
 		else {
-			Frequency =  false;
+			Frequency =  true;
 			Station = 530;
 		}
 		return Frequency;
@@ -53,7 +56,7 @@ public class Carro implements Interfaz_R {
 	@Override
 	public float setVolume(float volume) {
 		_Volume = _Volume + volume;		
-		return 0;
+		return _Volume;
 	}
 
 	@Override
@@ -73,7 +76,7 @@ public class Carro implements Interfaz_R {
 				Station = (float) 107.7;
 			}
 		}
-		else {
+		if (Frequency == true) {
 			if (Station <= 1610) {
 				Station = Station += 10;
 				
@@ -83,7 +86,7 @@ public class Carro implements Interfaz_R {
 			}
 		}
 		
-		return 0;
+		return Station;
 	}
 
 	@Override
@@ -97,7 +100,7 @@ public class Carro implements Interfaz_R {
 				Station = (float) 107.7;
 			}
 		}
-		else {
+		if (Frequency == true){
 			if (Station <= 1610) {
 				Station = Station += 10;
 				
@@ -107,32 +110,41 @@ public class Carro implements Interfaz_R {
 			}
 		}
 		
-		return 0;
+		return Station;
 	}
 
 	@Override
 	public void setStation(int current_station) throws Exception {
-		Station = (float) SavedAM.get(current_station);
-		return;
+	  if (Frequency == true) {
+		  
+	        if (current_station >= 0 && current_station < SavedAM.size()) {
+	            Station = SavedAM.get(current_station).floatValue();
+	        } else {
+	            throw new Exception("Index out of range for SavedAM");
+	        }
+	    } else {
+	        if (current_station >= 0 && current_station < SavedFM.size()) {
+	            Station = SavedFM.get(current_station).floatValue();
+	        } else {
+	            throw new Exception("Index out of range for SavedFM");
+	        }
+	    }
 		
 	}
 	
 	@Override
 	public void setSaved(int indexB) {
-		
-		if (Frequency = true) {
-			SavedAM.set(indexB, Station);
-		}
-		else {
-			SavedFM.set(indexB, Station);
-
-		}
+	    if (Frequency == true) {
+	        SavedAM.set(indexB, Station);
+	    } else {
+	        SavedFM.set(indexB, Station);
+	    }
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public float getStation(float _station) throws Exception {
+	public float getStation(float _station) {
 		return Station;
 		// TODO Auto-generated method stub
 		

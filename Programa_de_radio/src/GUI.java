@@ -15,7 +15,7 @@ public class GUI {
 				int opcion = 0;
 				System.out.println("RADIO");
 				System.out.println();
-				System.out.println();
+			 	System.out.println();
 				System.out.println("1. Cambiar Frecuencia (AM/FM)");
 				System.out.println("2. Emisora anterior");
 				System.out.println("3. Siguiente emisora");
