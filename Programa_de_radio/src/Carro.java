@@ -67,6 +67,7 @@ public class Carro implements Interfaz_R {
 
 	@Override
 	public float Stat_ChangeB(float current_station) {
+		Station = current_station;
 		if (Frequency == false) {
 			if (Station >= 87.7) {
 				Station = Station -= 0.2;
@@ -77,12 +78,12 @@ public class Carro implements Interfaz_R {
 			}
 		}
 		if (Frequency == true) {
-			if (Station <= 1610) {
-				Station = Station += 10;
+			if (Station > 530) {
+				Station = Station -= 10;
 				
 			}
 			else {
-				Station = (float) 530;
+				Station = (float) 1610;
 			}
 		}
 		
@@ -91,17 +92,18 @@ public class Carro implements Interfaz_R {
 
 	@Override
 	public float Stat_ChangeF(float current_station) {
+		Station = current_station;
 		if (Frequency == false) {
-			if (Station <= 107.7) {
+			if (Station < 107.7) {
 				Station = Station += 0.2;
 				
 			}
 			else {
-				Station = (float) 107.7;
+				Station = (float) 87.9;
 			}
 		}
 		if (Frequency == true){
-			if (Station <= 1610) {
+			if (Station < 1610) {
 				Station = Station += 10;
 				
 			}
