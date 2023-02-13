@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Carro implements Interfaz_R {
@@ -23,8 +24,8 @@ public class Carro implements Interfaz_R {
 		
 		_Volume = 0;
 		
-		SavedAM = new ArrayList<Number>();
-		SavedFM = new ArrayList<Number>();
+		SavedAM = new ArrayList<Number>(Arrays.asList(null, null, null, null, null));
+		SavedFM = new ArrayList<Number>(Arrays.asList(null, null, null, null, null));
 		
 	}
 
@@ -116,30 +117,40 @@ public class Carro implements Interfaz_R {
 	}
 
 	@Override
-	public void setStation(int current_station) throws Exception {
-	  if (Frequency == true) {
-		  
-	        if (current_station >= 0 && current_station < SavedAM.size()) {
-	            Station = SavedAM.get(current_station).floatValue();
+	public void setStation(int index) throws Exception {
+		//System.out.println("current station " + Station);
+		//System.out.println("current frequency" + Frequency);
+	    index = index - 1;
+	    if (index >= 0 && index <= 5) {
+	        if (SavedAM.get(index) != null) {
+	            if (Frequency == true) {
+	                Station = SavedAM.get(index).floatValue();
+	            } else {
+	                Station = SavedFM.get(index).floatValue();
+	            }
 	        } else {
-	            throw new Exception("Index out of range for SavedAM");
+	            System.out.println("\nNo hay estación guardada");
 	        }
 	    } else {
-	        if (current_station >= 0 && current_station < SavedFM.size()) {
-	            Station = SavedFM.get(current_station).floatValue();
-	        } else {
-	            throw new Exception("Index out of range for SavedFM");
-	        }
+	        throw new Exception("\nEl índice está fuera de rango. Ingrese un valor del 1 al 6");
 	    }
-		
 	}
 	
 	@Override
 	public void setSaved(int indexB) {
+		//System.out.println("current station " + Station);
+		//System.out.println("current frequency" + Frequency);
+		
+		indexB = indexB -1;
 	    if (Frequency == true) {
 	        SavedAM.set(indexB, Station);
+        	System.out.println(SavedAM.get(indexB)  + "saved to SavedAM button " + (indexB + 1));
+
+	        
 	    } else {
 	        SavedFM.set(indexB, Station);
+        	System.out.println(SavedFM.get(indexB) + "saved to SavedAM button " + (indexB + 1));
+
 	    }
 		// TODO Auto-generated method stub
 		

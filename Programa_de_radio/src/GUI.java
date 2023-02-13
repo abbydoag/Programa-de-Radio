@@ -8,10 +8,14 @@ public class GUI {
 		boolean terminar = false, encendido = false, frequency = false;
 		float current_station = (float) 87.90;
 		while(!terminar){
+			System.out.println("\n Radio Status ");
+			System.out.println("   Radio encendida " + encendido);
+			System.out.println("   Estacion actual " + current_station);
+			System.out.println("   Frqcuencia " + frequency);
+			System.out.println(" ");
+			
             if (encendido){
                 //float current_station = c.getStation(current_station);
-                boolean statusF = c.FM_AM(frequency);
-
 				int opcion = 0;
 				System.out.println("RADIO");
 				System.out.println();
@@ -29,17 +33,19 @@ public class GUI {
 				switch(opcion){
                     case 1:
                         //cambiar frecuencia (AM o FM)
-                        c.FM_AM(statusF);
+                    	frequency = c.FM_AM(frequency);
+						current_station = c.getStation(current_station);
+
                         break;
 
                     case 2:
                         // Subir emisora
-                        c.Stat_ChangeB(current_station);
+                    	current_station = c.Stat_ChangeB(current_station);
                         break;
 
                     case 3:
                         // bajar emisora 
-                        c.Stat_ChangeF(current_station);
+                    	current_station = c.Stat_ChangeF(current_station);
                         break;
 
                     case 4:
@@ -54,8 +60,10 @@ public class GUI {
                     case 5:
                     	System.out.println("¿Qué espacio desea ver? (1-6): ");
                     	int opcion2 = 0;
+                    	opcion2 = scan.nextInt();
 					try {
-						c.getStation(opcion2);
+						c.setStation(opcion2);
+						current_station = c.getStation(current_station);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
